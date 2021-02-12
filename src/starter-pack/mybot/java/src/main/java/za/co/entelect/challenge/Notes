@@ -1,0 +1,10 @@
+1. Get valid move/dig (nomor 1)
+	i. check if coordinate is valid
+	ii. if move, check if air or lava and not deep space or dirt
+	iii. if dig, check if cell is dirt not other cells
+	iv. check if other worm is there 
+// 2. Hunt Move/dig (greedy by distance to enemy and by enemy health) (nomor 4)
+// 3. Move to center (greedy by distance to center) (nomor 2)
+5. Move away from lava (greedy by danger from lava) (nomor 3)
+6. Move away from danger (enemy basic shot or bananabomb) -> implement dangerous area detection to go_to_pos if possible (later)
+7. Run away if in danger
