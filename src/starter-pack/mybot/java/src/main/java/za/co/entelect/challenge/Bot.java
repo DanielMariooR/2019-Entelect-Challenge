@@ -19,7 +19,7 @@ public class Bot {
     private MyWorm currentWorm;
     private MyPlayer player;
 
-    public Bot(GameState gameState){
+    public Bot(GameState gameState) {
         this.gameState = gameState;
         this.opponent = gameState.opponents[0];
         this.currentWorm = getCurrentWorm(gameState);
@@ -35,33 +35,33 @@ public class Bot {
 
     private List<Cell> shootableCell() {
         ArrayList<Cell> cells = new ArrayList<>();
-        for(int i=0; i<3; i++){
-            if(opponent.worms[i].health > 0) {
+        for (int i = 0; i < 3; i++) {
+            if (opponent.worms[i].health > 0) {
                 int posX = opponent.worms[i].position.x;
                 int posY = opponent.worms[i].position.y;
-                for(Direction direction: Direction.values()) {
+                for (Direction direction : Direction.values()) {
                     int dx = direction.x;
                     int dy = direction.y;
                     int x = posX;
                     int y = posY;
-                    while(true){
+                    while (true) {
                         x += dx;
                         y += dy;
 
-                        if(!isValidCoordinate(x,y)){
+                        if (!isValidCoordinate(x, y)) {
                             break;
                         }
 
-                        if(euclideanDistance(posX, posY, x, y) > 4){
+                        if (euclideanDistance(posX, posY, x, y) > 4) {
                             break;
                         }
 
                         Cell cell = gameState.map[y][x];
-                        if(cell.type != CellType.AIR){
+                        if (cell.type != CellType.AIR) {
                             break;
                         }
 
-                        if(isthereWorm(x,y)){
+                        if (isthereWorm(x, y)) {
                             cells.add(cell);
                             break;
                         }
@@ -75,10 +75,10 @@ public class Bot {
         return cells;
     }
 
-    private boolean isthereWorm(int x, int y){
-        for(int i=0; i<3; i++){
-            if(opponent.worms[i].health > 0 || player.worms[i].health > 0){
-                if((opponent.worms[i].position.x == x && opponent.worms[i].position.y == y) || (player.worms[i].position.x == x && player.worms[i].position.y == y)){
+    private boolean isthereWorm(int x, int y) {
+        for (int i = 0; i < 3; i++) {
+            if (opponent.worms[i].health > 0 || player.worms[i].health > 0) {
+                if ((opponent.worms[i].position.x == x && opponent.worms[i].position.y == y) || (player.worms[i].position.x == x && player.worms[i].position.y == y)) {
                     return true;
                 }
             }
@@ -88,64 +88,62 @@ public class Bot {
     }
 
     private Command runAway(Worm worm) {
-        // If in danger (lowHP) and in dangerous area (shootable or bananabomb threat) 
-        // run away then dont move there if no move then move furthest from enemy 
+        // If in danger (lowHP) and in dangerous area (shootable or bananabomb threat)
+        // run away then dont move there if no move then move furthest from enemy
         // Iterate through every possible escape route if not harmful go furthest from enemy
         // If harmful go furthest from enemy
 
         boolean noValidMove = true;
-        for(Direction direction: Direction.values()){
-            if(!isPosDangerous(direction.x, direction.y)){
+        for (Direction direction : Direction.values()) {
+            if (!isPosDangerous(direction.x, direction.y)) {
                 return go_to_pos(direction.x, direction.y);
             }
 
-            if(isValidMove(direction.x , direction.y)){
+            if (isValidMove(direction.x, direction.y)) {
                 noValidMove = false;
             }
         }
 
-        if(!noValidMove){
+        if (!noValidMove) {
             runFromEnemy(worm);
         } else {
             canShoot = canWormShoot(worm);
-            if(canShoot){
+            if (canShoot) {
                 return shoot_lowest_health();
-            } else {
-                return DoNothing();
             }
         }
-        return null;
+        return DoNothing();
     }
 
 
-    private Command runFromEnemy(Worm worm){
+    private Command runFromEnemy(Worm worm) {
         //Find the furthest from shooting (dist <= 4) enemy (x,y)
         //return go to pos(x,y)
         int dist;
         int maxdist = -1000;
         int moveX = -99;
         int moveY = -99;
-        for(Direction direction: Direction.values()) {
+        for (Direction direction : Direction.values()) {
             int dx = direction.x;
             int dy = direction.y;
             int x = worm.position.x;
             int y = worm.position.y;
-            while(true){
-                if(euclideanDistance(worm.position.x, worm.position.y, x, y) > 4){
+            while (true) {
+                if (euclideanDistance(worm.position.x, worm.position.y, x, y) > 4) {
                     break;
                 }
 
                 dist = 0;
-                for(int i=0; i<3; i++){
-                    if(opponent.worms[i].health > 0){
-                        int temp = euclideanDistance(x,y, opponent.worms[i].position.x, opponent.worms[i].position.y);
-                        if(temp <= 4){
+                for (int i = 0; i < 3; i++) {
+                    if (opponent.worms[i].health > 0) {
+                        int temp = euclideanDistance(x, y, opponent.worms[i].position.x, opponent.worms[i].position.y);
+                        if (temp <= 4) {
                             dist += temp;
                         }
                     }
                 }
 
-                if(dist > maxdist){
+                if (dist > maxdist) {
                     maxdist = dist;
                     moveX = x;
                     moveY = y;
@@ -159,7 +157,7 @@ public class Bot {
         return go_to_pos(moveX, moveY);
     }
 
-    private boolean isPosDangerous(int x, int y){
+    private boolean isPosDangerous(int x, int y) {
         List<Cell> dangerCell = shootableCell();
         for (Cell cell : dangerCell) {
             if (cell.x == x && cell.y == y) {
@@ -169,47 +167,53 @@ public class Bot {
         return false;
     }
 
-    private boolean isInDanger(Worm worm){
+    private boolean isInDanger(Worm worm) {
         return isPosDangerous(worm.position.x, worm.position.y);
     }
 
 
-    private Command move_to_lowest_health(){
-        int minHP = 150;
+    private Command move_to_lowest_health() {
+        int minHP = 300;
         int minDist = 1000;
         int id = 0;
-        for(int i=0; i<3; i++){ 
-            if(minHP > opponent.worms[i].health && opponent.worms[i].health > 0){
+        int move_x = -99;
+        int move_y = -99;
+        for (int i = 0; i < 3; i++) {
+            if (minHP > opponent.worms[i].health && opponent.worms[i].health > 0) {
                 minHP = opponent.worms[i].health;
-                minDist = euclideanDistance(currentWorm.position.x, currentWorm.position.y,opponent.worms[i].position.x, opponent.worms[i].position.y);
-                id = i+1;
-                    
-            } else if(minHP == opponent.worms[i].health && opponent.worms[i].health > 0){
-                int temp = euclideanDistance(currentWorm.position.x, currentWorm.position.y,opponent.worms[i].position.x, opponent.worms[i].position.y);
-                if(minDist > temp){
-                    id = i+1;
-                    minDist = temp; 
+                minDist = euclideanDistance(currentWorm.position.x, currentWorm.position.y, opponent.worms[i].position.x, opponent.worms[i].position.y);
+                move_x = opponent.worms[i].position.x;
+                move_y = opponent.worms[i].position.y;
+
+            } else if (minHP == opponent.worms[i].health && opponent.worms[i].health > 0) {
+                int temp = euclideanDistance(currentWorm.position.x, currentWorm.position.y, opponent.worms[i].position.x, opponent.worms[i].position.y);
+                if (minDist > temp) {
+                    move_x = opponent.worms[i].position.x;
+                    move_y = opponent.worms[i].position.y;
                 }
             }
         }
-        int posX = opponent.worms[id-1].position.x;
-        int posY = opponent.worms[id-1].position.y;
-        return go_to_pos(posX, posY);
+
+        if (move_x != -99 && move_y != -99) {
+            return go_to_pos(move_x, move_y);
+        }
+
+        return null;
     }
 
 
-    private boolean isValidMove(int x, int y){
-        if(!isValidCoordinate(x,y)){
+    private boolean isValidMove(int x, int y) {
+        if (!isValidCoordinate(x, y)) {
             return false;
         }
 
         Cell cell = gameState.map[y][x];
-        if(cell.type == CellType.DEEP_SPACE){
+        if (cell.type == CellType.DEEP_SPACE) {
             return false;
         }
 
-        for(int i=0; i<3; i++){
-            if((opponent.worms[i].position.x == x && opponent.worms[i].position.y == y)||(player.worms[i].position.x == x && player.worms[i].position.y == y)){
+        for (int i = 0; i < 3; i++) {
+            if ((opponent.worms[i].position.x == x && opponent.worms[i].position.y == y) || (player.worms[i].position.x == x && player.worms[i].position.y == y)) {
                 return false;
             }
         }
@@ -221,32 +225,38 @@ public class Bot {
         int min = 10000;
         int move_x = -99;
         int move_y = -99;
-        for(Direction direction: Direction.values()) {
+        for (Direction direction : Direction.values()) {
             int x = currentWorm.position.x + direction.x;
             int y = currentWorm.position.y + direction.y;
 
-            if(!isValidCoordinate(x,y)) { continue; }
+            if (!isValidCoordinate(x, y)) {
+                continue;
+            }
 
-            if(!isValidMove(x,y)) {continue; }
+            if (!isValidMove(x, y)) {
+                continue;
+            }
 
-            int dis = euclideanDistance(x,y,posX,posY);
-            if( dis < min) {
+            int dis = euclideanDistance(x, y, posX, posY);
+            if (dis < min) {
                 min = dis;
                 move_x = x;
                 move_y = y;
             }
         }
 
-        Cell cell = gameState.map[move_y][move_x];
-        if(cell.type == CellType.AIR || cell.type == CellType.LAVA){
-            return new MoveCommand(move_x,move_y);
-        } else if(cell.type == CellType.DIRT){
-            return new DigCommand(move_x,move_y);
+        if (move_x != -99 && move_y != -99) {
+            Cell cell = gameState.map[move_y][move_x];
+            if (cell.type == CellType.AIR || cell.type == CellType.LAVA) {
+                return new MoveCommand(move_x, move_y);
+            } else if (cell.type == CellType.DIRT) {
+                return new DigCommand(move_x, move_y);
+            }
         }
         return null;
     }
 
-    private Command go_to_center(){
+    private Command go_to_center() {
         return go_to_pos(16, 16);
     }
 
@@ -259,12 +269,18 @@ public class Bot {
                 && y >= 0 && y < gameState.mapSize;
     }
 
-    private DoNothingCommand DoNothing(){
+    private DoNothingCommand DoNothing() {
         return new DoNothingCommand();
     }
 
+
+    private Command selectAndRun(Worm worm) {
+        return DoNothing();
+    }
+
+
     private Worm findBananableEnemy(Opponent enemy) {
-        for (int i=2; i>=0; i++) {
+        for (int i = 2; i >= 0; i++) {
             if (enemy.worms[i].health > 0) {
                 if (euclideanDistance(currentWorm.position.x, currentWorm.position.y, enemy.worms[i].position.x, enemy.worms[i].position.y) <= currentWorm.bananaBombs.range) {
                     return enemy.worms[i];
@@ -275,7 +291,7 @@ public class Bot {
     }
 
     private Worm possibleBlastedAlly(Worm target) {
-        for (Worm ally: gameState.myPlayer.worms) {
+        for (Worm ally : gameState.myPlayer.worms) {
             if ((Math.abs(ally.position.x + target.position.x) <= 2) && (Math.abs(ally.position.y + target.position.y) <= 2)) {
                 return ally;
             }
@@ -285,10 +301,10 @@ public class Bot {
 
     private Cell findSnowableCell(Opponent enemy) {
         ArrayList<Cell> forbiddenCells = new ArrayList<>();
-        for (int i=2; i>=0; i++) {
+        for (int i = 2; i >= 0; i++) {
             if ((enemy.worms[i].health > 0) && (enemy.worms[i].roundsUntilUnfrozen <= 0)) {
                 if (euclideanDistance(currentWorm.position.x, currentWorm.position.y, enemy.worms[i].position.x, enemy.worms[i].position.y) < currentWorm.snowballs.range + 1) {
-                    for (Worm ally: gameState.myPlayer.worms) {
+                    for (Worm ally : gameState.myPlayer.worms) {
                         if ((Math.abs(ally.position.x - enemy.worms[i].position.x) <= 2) && (Math.abs(ally.position.y - enemy.worms[i].position.y) <= 2)) {
                             forbiddenCells.addAll(getSurroundingCells(ally.position.x, ally.position.y, 1));
                         }
@@ -318,7 +334,49 @@ public class Bot {
         return cells;
     }
 
-    public void Run(GameState gamestate){
-        
+    public Command Run() {
+        for (Worm ally : player.worms) {
+            if (ally.id != currentWorm.id && ally.health > 0 && ally.health <= 25) {
+                return selectAndRun(ally);
+            }
+        }
+
+        //Code for attack
+
+        for (Direction direction : Direction.values()) {
+            Cell cell = gameState.map[direction.y][direction.x];
+            PowerUp healthPack = cell.powerUp;
+            if (healthPack != null) {
+                return new MoveCommand(direction.x, direction.y);
+            }
+        }
+
+        Cell cell = gameState.map[currentWorm.position.y][currentWorm.position.x];
+        Command myCommand;
+        if (cell.type == CellType.LAVA) {
+            myCommand = go_to_center();
+            if (myCommand != null) {
+                return myCommand;
+            }
+        }
+
+        if (isPosDangerous(currentWorm.position.x, currentWorm.position.y) && currentWorm.health <= 25) {
+            myCommand = runAway(currentWorm);
+            if (myCommand != null) {
+                return myCommand;
+            }
+        }
+
+        myCommand = move_to_lowest_health();
+        if (myCommand != null) {
+            return myCommand;
+        }
+
+        myCommand = go_to_center();
+        if (myCommand != null) {
+            return myCommand;
+        }
+
+        return DoNothing();
     }
 }
