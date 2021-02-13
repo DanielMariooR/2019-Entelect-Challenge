@@ -263,6 +263,61 @@ public class Bot {
         return new DoNothingCommand();
     }
 
+    private Worm findBananableEnemy(Opponent enemy) {
+        for (int i=2; i>=0; i++) {
+            if (enemy.worms[i].health > 0) {
+                if (euclideanDistance(currentWorm.position.x, currentWorm.position.y, enemy.worms[i].position.x, enemy.worms[i].position.y) <= currentWorm.bananaBombs.range) {
+                    return enemy.worms[i];
+                }
+            }
+        }
+        return null;
+    }
+
+    private Worm possibleBlastedAlly(Worm target) {
+        for (Worm ally: gameState.myPlayer.worms) {
+            if ((Math.abs(ally.position.x + target.position.x) <= 2) && (Math.abs(ally.position.y + target.position.y) <= 2)) {
+                return ally;
+            }
+        }
+        return null;
+    }
+
+    private Cell findSnowableCell(Opponent enemy) {
+        ArrayList<Cell> forbiddenCells = new ArrayList<>();
+        for (int i=2; i>=0; i++) {
+            if ((enemy.worms[i].health > 0) && (enemy.worms[i].roundsUntilUnfrozen <= 0)) {
+                if (euclideanDistance(currentWorm.position.x, currentWorm.position.y, enemy.worms[i].position.x, enemy.worms[i].position.y) < currentWorm.snowballs.range + 1) {
+                    for (Worm ally: gameState.myPlayer.worms) {
+                        if ((Math.abs(ally.position.x - enemy.worms[i].position.x) <= 2) && (Math.abs(ally.position.y - enemy.worms[i].position.y) <= 2)) {
+                            forbiddenCells.addAll(getSurroundingCells(ally.position.x, ally.position.y, 1));
+                        }
+                    }
+                    for (Cell worthyCell : getSurroundingCells(enemy.worms[i].position.x, enemy.worms[i].position.y, 1)) {
+                        if ((euclideanDistance(worthyCell.x, worthyCell.y, currentWorm.position.x, currentWorm.position.y) <= currentWorm.snowballs.range) && (!forbiddenCells.contains(worthyCell))) {
+                            return worthyCell;
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    private List<Cell> getSurroundingCells(int x, int y, int range) {
+        ArrayList<Cell> cells = new ArrayList<>();
+        for (int i = x - range; i <= x + range; i++) {
+            for (int j = y - range; j <= y + range; j++) {
+                // Don't include the current position
+                if (i != x && j != y && isValidCoordinate(i, j)) {
+                    cells.add(gameState.map[j][i]);
+                }
+            }
+        }
+
+        return cells;
+    }
+
     public void Run(GameState gamestate){
         
     }
