@@ -342,6 +342,22 @@ public class Bot {
         }
 
         //Code for attack
+        if (currentWorm.snowballs != null) {
+            Cell target = findSnowableCell(opponent);
+            if (target != null) {
+                return new SnowballCommand(target.x, target.y);
+            }
+        }
+
+        if (currentWorm.bananaBombs != null) {
+            Worm target = findBananableEnemy(opponent);
+            if (target != null) {
+                Worm ally = possibleBlastedAlly(target);
+                if (ally == null) {
+                    return new BananaCommand(target.position.x, target.position.y);
+                }
+            }
+        }
 
         for (Direction direction : Direction.values()) {
             Cell cell = gameState.map[direction.y][direction.x];
