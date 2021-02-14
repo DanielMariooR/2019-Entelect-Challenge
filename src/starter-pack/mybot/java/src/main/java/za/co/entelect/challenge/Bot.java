@@ -370,7 +370,7 @@ public class Bot {
 
     public Command Run() {
         for (Worm ally : player.worms) {
-            if (ally.id != currentWorm.id && ally.health > 0 && ally.health <= 25) {
+            if (ally.id != currentWorm.id && ally.health > 0 && ally.health <= 25 && player.remainingselect > 0) {
                 Command myCommand = runAway(ally);
                 return new SelectCommand(ally.id, myCommand);
             }
