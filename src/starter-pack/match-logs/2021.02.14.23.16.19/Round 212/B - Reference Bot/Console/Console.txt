@@ -1,0 +1,36 @@
+My Player:H=272 S=1407 W=3 X,Y=24,15
+Player 1 :H=8 S=1108
+
+██████████████████████XX▓▓▓▓XX▓▓▓▓▓▓XX▓▓▓▓XX██████████████████████
+████████████████▓▓▓▓XXXXXX▓▓▓▓▓▓▓▓▓▓▓▓▓▓XXXXXX▓▓▓▓████████████████
+██████████████▓▓▓▓▓▓▓▓XX▓▓▓▓▓▓▓▓XX▓▓▓▓▓▓▓▓XX▓▓▓▓▓▓▓▓██████████████
+████████████▓▓XXXXXX▓▓XX▓▓▓▓XXXXXXXXXX▓▓▓▓XX▓▓XXXXXX▓▓████████████
+████████▓▓▓▓▓▓XXXXXX▓▓XXXX▓▓XXXX▓▓XXXX▓▓XXXX▓▓XXXXXX▓▓▓▓▓▓████████
+████████XXXX▓▓XXXXXX▓▓XXXX▓▓XX▓▓▓▓▓▓XX▓▓XXXX▓▓XXXXXX▓▓XXXX████████
+██████XXXX▓▓▓▓▓▓▓▓▓▓XXXXXXXX▓▓▓▓▓▓▓▓▓▓XXXXXX▓▓▓▓▓▓▓▓XX▓▓XXXX██████
+████XXXX▓▓▓▓▓▓▓▓XX▓▓▓▓XXXXXX▓▓▓▓XX▓▓▓▓XXXXXX▓▓▓▓XX▓▓▓▓XX▓▓XXXX████
+██▓▓XX▓▓▓▓▓▓▓▓XXXX▓▓▓▓▓▓XX░░▓▓▓▓░░▓▓▓▓░░XX▓▓▓▓▓▓XXXX▓▓▓▓XX▓▓XX▓▓██
+██▓▓XXXX▓▓XX▓▓▓▓▓▓XX▓▓▓▓▓▓░░░░░░░░░░░░░░▓▓▓▓▓▓XX▓▓▓▓▓▓XX▓▓XXXX▓▓██
+██XXXX▓▓▓▓XXXX▓▓XXXX▓▓▓▓▓▓░░░░░░░░░░░░░░▓▓▓▓▓▓XXXX▓▓XXXXXXXXXXXX██
+XXXX▓▓▓▓▓▓XXXXXXXX░░▓▓▓▓▓▓░░░░░░░░░░░░░░▓▓▓▓▓▓░░XXXXXX▓▓XXXX▓▓XXXX
+XXXXXX▓▓XX▓▓XXXXXX░░▓▓▓▓░░░░░░░░░░░░░░░░▓▓▓▓░░░░XXXXXXXXXX▓▓XXXXXX
+▓▓▓▓XXXX▓▓▓▓XXXX░░░░░░░░░░▓▓░░▓▓░░░░░░▓▓░░░░░░░░░░XXXXXX▓▓▓▓▓▓▓▓▓▓
+▓▓▓▓XX▓▓▓▓▓▓▓▓▓▓▓▓░░▓▓▓▓▓▓▓▓░░░░░░░░░░▓▓░░░░░░21░░XXXXXX▓▓▓▓▓▓▓▓▓▓
+XXXXXX▓▓XX▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░221323XXXX▓▓XX▓▓XXXXXX
+XXXXXX▓▓▓▓▓▓▓▓XX▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░▓▓▓▓▓▓░░░░XX▓▓▓▓▓▓▓▓XXXXXX
+XXXXXX▓▓▓▓▓▓XXXX░░▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░▓▓░░░░░░XXXXXXXXXXXXXXXX
+▓▓▓▓▓▓▓▓XXXXXXXX░░▓▓▓▓▓▓░░░░░░▓▓▓▓▓▓░░░░░░▓▓▓▓░░░░XXXXXXXX▓▓▓▓▓▓▓▓
+▓▓▓▓▓▓XXXXXXXX▓▓▓▓░░▓▓▓▓▓▓▓▓░░░░▓▓░░░░▓▓▓▓▓▓▓▓░░░░▓▓XXXXXXXX▓▓▓▓▓▓
+▓▓▓▓▓▓▓▓XXXX▓▓▓▓XX░░▓▓▓▓▓▓▓▓░░░░░░░░░░▓▓▓▓▓▓▓▓░░XX▓▓▓▓XXXX▓▓▓▓▓▓▓▓
+XXXX▓▓▓▓XXXX▓▓▓▓XX░░▓▓▓▓▓▓▓▓▓▓░░░░▓▓▓▓▓▓▓▓▓▓▓▓░░XXXXXXXXXX▓▓▓▓XXXX
+██▓▓▓▓▓▓XX▓▓▓▓▓▓XXXX▓▓░░░░▓▓░░▓▓░░▓▓▓▓▓▓░░░░▓▓XXXX▓▓XX▓▓XX▓▓▓▓▓▓██
+██▓▓▓▓XXXXXX▓▓XXXXXXXX░░░░░░▓▓▓▓▓▓▓▓▓▓▓▓░░░░XXXXXXXXXXXXXXXX▓▓▓▓██
+██XXXXXXXXXX▓▓XXXXXXXXXXXX▓▓░░░░▓▓░░░░▓▓▓▓XXXXXXXXXXXXXXXXXXXXXX██
+████XXXX▓▓▓▓▓▓▓▓▓▓▓▓XXXX▓▓XXXXXXXXXXXXXX▓▓▓▓XX▓▓▓▓▓▓XX▓▓▓▓XXXX████
+██████XX▓▓▓▓▓▓▓▓▓▓▓▓XXXXXXXX▓▓▓▓▓▓▓▓▓▓XXXXXX▓▓▓▓▓▓▓▓XX▓▓▓▓XX██████
+████████▓▓▓▓▓▓XXXXXX▓▓XXXXXX▓▓▓▓▓▓▓▓▓▓XXXXXX▓▓XXXXXX▓▓▓▓▓▓████████
+████████▓▓XX▓▓XXXXXX▓▓▓▓XX▓▓▓▓XXXXXX▓▓▓▓XX▓▓▓▓XXXXXX▓▓XX▓▓████████
+████████████▓▓XXXXXX▓▓XXXX▓▓▓▓XXXXXX▓▓▓▓XXXX▓▓XXXXXX▓▓████████████
+██████████████▓▓▓▓▓▓▓▓XXXXXX▓▓▓▓XX▓▓▓▓XXXXXX▓▓▓▓▓▓▓▓██████████████
+████████████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓XX▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████████████
+██████████████████████▓▓▓▓XX▓▓▓▓XX▓▓▓▓XX▓▓▓▓██████████████████████

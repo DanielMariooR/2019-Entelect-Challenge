@@ -1,0 +1,34 @@
+Match seed: 12226
+
+The winner is: B - Reference Bot
+
+A - James- score:64 health:350
+B - Reference Bot- score:191 health:350
+=======================================
+Referee messages
+=======================================
+DoNothingsCount for @Player(1) reached a count of 3 @Round(3)
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive timeouts on rounds 1 and 2
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive timeouts on rounds 2 and 3
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive timeouts on rounds 3 and 4
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive timeouts on rounds 4 and 5
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive timeouts on rounds 5 and 6
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive timeouts on rounds 6 and 7
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive timeouts on rounds 7 and 8
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive timeouts on rounds 8 and 9
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive timeouts on rounds 9 and 10
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive timeouts on rounds 10 and 11
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive timeouts on rounds 11 and 12
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive timeouts on rounds 12 and 13
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive exceptions on rounds 1 and 2
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive exceptions on rounds 2 and 3
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive exceptions on rounds 3 and 4
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive exceptions on rounds 4 and 5
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive exceptions on rounds 5 and 6
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive exceptions on rounds 6 and 7
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive exceptions on rounds 7 and 8
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive exceptions on rounds 8 and 9
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive exceptions on rounds 9 and 10
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive exceptions on rounds 10 and 11
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive exceptions on rounds 11 and 12
+Player: 9733d8d5-5d6b-42a0-8a36-047e40b8a667 (A - James) -> Consecutive exceptions on rounds 12 and 13

@@ -1,0 +1,20 @@
+Match seed: 14443
+
+The winner is: B - Reference Bot
+
+A - James- score:824 health:0
+B - Reference Bot- score:1600 health:286
+=======================================
+Referee messages
+=======================================
+DoNothingsCount for @Player(1) reached a count of 3 @Round(100)
+Player: 47a3d235-5284-4252-9a18-a2a0266177d5 (A - James) -> Consecutive timeouts on rounds 98 and 99
+Player: 47a3d235-5284-4252-9a18-a2a0266177d5 (A - James) -> Consecutive timeouts on rounds 99 and 100
+Player: 47a3d235-5284-4252-9a18-a2a0266177d5 (A - James) -> Consecutive timeouts on rounds 100 and 101
+Player: 47a3d235-5284-4252-9a18-a2a0266177d5 (A - James) -> Consecutive timeouts on rounds 101 and 102
+Player: 47a3d235-5284-4252-9a18-a2a0266177d5 (A - James) -> Consecutive timeouts on rounds 102 and 103
+Player: 47a3d235-5284-4252-9a18-a2a0266177d5 (A - James) -> Consecutive exceptions on rounds 98 and 99
+Player: 47a3d235-5284-4252-9a18-a2a0266177d5 (A - James) -> Consecutive exceptions on rounds 99 and 100
+Player: 47a3d235-5284-4252-9a18-a2a0266177d5 (A - James) -> Consecutive exceptions on rounds 100 and 101
+Player: 47a3d235-5284-4252-9a18-a2a0266177d5 (A - James) -> Consecutive exceptions on rounds 101 and 102
+Player: 47a3d235-5284-4252-9a18-a2a0266177d5 (A - James) -> Consecutive exceptions on rounds 102 and 103

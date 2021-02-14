@@ -1,0 +1,6 @@
+Match seed: 16051
+
+The winner is: B - Reference Bot
+
+A - James- score:1065 health:0
+B - Reference Bot- score:1386 health:46

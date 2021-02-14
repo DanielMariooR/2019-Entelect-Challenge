@@ -1,0 +1,14 @@
+Round,LastCommandType,LastCommand,ActiveWorm,Score,Health,Worm1 Health,Worm1 x,Worm1 y,Worm2 Health,Worm2 x,Worm2 y,Worm3 Health,Worm3 x,Worm3 y
+1,null,"null",1,116,350,150,24,4,100,24,28,100,1,16
+2,invalid,"invalid",1,112,350,150,24,4,100,24,28,100,1,16
+3,invalid,"invalid",2,108,350,150,24,4,100,24,28,100,1,16
+4,invalid,"invalid",3,104,350,150,24,4,100,24,28,100,1,16
+5,invalid,"invalid",1,100,350,150,24,4,100,24,28,100,1,16
+6,invalid,"invalid",2,96,350,150,24,4,100,24,28,100,1,16
+7,invalid,"invalid",3,92,350,150,24,4,100,24,28,100,1,16
+8,invalid,"invalid",1,88,350,150,24,4,100,24,28,100,1,16
+9,invalid,"invalid",2,84,350,150,24,4,100,24,28,100,1,16
+10,invalid,"invalid",3,80,350,150,24,4,100,24,28,100,1,16
+11,invalid,"invalid",1,76,350,150,24,4,100,24,28,100,1,16
+12,invalid,"invalid",2,72,350,150,24,4,100,24,28,100,1,16
+13,invalid,"invalid",3,68,350,150,24,4,100,24,28,100,1,16

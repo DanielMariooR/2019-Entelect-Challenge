@@ -1,0 +1,3 @@
+Command: No Command
+Execution time: 1000ms
+Exception: 	at za.co.entelect.challenge.Main.main(Main.java:36)
