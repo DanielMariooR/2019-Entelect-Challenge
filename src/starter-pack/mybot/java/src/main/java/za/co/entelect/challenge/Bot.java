@@ -220,9 +220,9 @@ public class Bot {
         if (!noValidMove) {
             runFromEnemy(worm);
         } else {
-            boolean canShoot = canWormShoot(worm);
-            if (canShoot) {
-                return shoot_lowest_health();
+            Cell targetCell = targetableEnemyCell();
+            if (targetCell != null) {
+                return shootDirection(targetCell);
             }
         }
         return DoNothing();
