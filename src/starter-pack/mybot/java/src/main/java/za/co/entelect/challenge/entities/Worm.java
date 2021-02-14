@@ -20,4 +20,7 @@ public class Worm {
 
     @SerializedName("roundsUntilUnfrozen")
     public int roundsUntilUnfrozen;
+
+    @SerializedName("weapon")
+    public Weapon weapon;
 }
