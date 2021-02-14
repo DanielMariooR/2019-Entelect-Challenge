@@ -1,9 +1,6 @@
 package za.co.entelect.challenge;
 
-import za.co.entelect.challenge.command.Command;
-import za.co.entelect.challenge.command.DigCommand;
-import za.co.entelect.challenge.command.DoNothingCommand;
-import za.co.entelect.challenge.command.MoveCommand;
+import za.co.entelect.challenge.command.*;
 import za.co.entelect.challenge.entities.*;
 import za.co.entelect.challenge.enums.CellType;
 import za.co.entelect.challenge.enums.Direction;
@@ -94,7 +91,7 @@ public class Bot {
         else {
             int x = ((cell.x - currentWorm.position.x) + range - 1) / range;
             int y = ((cell.y - currentWorm.position.y) + range - 1) / range;
-            return ShootCommand(shootTo(x, y));
+            return new ShootCommand(shootTo(x, y));
         }
         return null;
     }
@@ -149,7 +146,7 @@ public class Bot {
         if (!noValidMove) {
             runFromEnemy(worm);
         } else {
-            canShoot = canWormShoot(worm);
+            boolean canShoot = canWormShoot(worm);
             if (canShoot) {
                 return shoot_lowest_health();
             }
@@ -316,11 +313,6 @@ public class Bot {
     }
 
 
-    private Command selectAndRun(Worm worm) {
-        return DoNothing();
-    }
-
-
     private Worm findBananableEnemy(Opponent enemy) {
         for (int i = 2; i >= 0; i++) {
             if (enemy.worms[i].health > 0) {
@@ -379,7 +371,8 @@ public class Bot {
     public Command Run() {
         for (Worm ally : player.worms) {
             if (ally.id != currentWorm.id && ally.health > 0 && ally.health <= 25) {
-                return selectAndRun(ally);
+                Command myCommand = runAway(ally);
+                return new SelectCommand(ally.id, myCommand);
             }
         }
 
@@ -419,7 +412,6 @@ public class Bot {
         }
 
         Cell cell = gameState.map[currentWorm.position.y][currentWorm.position.x];
-        Command myCommand;
         if (cell.type == CellType.LAVA) {
             myCommand = go_to_center();
             if (myCommand != null) {
