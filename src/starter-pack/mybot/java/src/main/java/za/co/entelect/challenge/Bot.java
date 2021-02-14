@@ -87,6 +87,48 @@ public class Bot {
         return false;
     }
 
+    private Command shootDirection(Cell cell) {
+        if (!enemyWormInRange(cell) || allyWormInRange(cell)) {
+            continue;
+        }
+        else {
+            int x = ((cell.x - currentWorm.position.x) + range - 1) / range;
+            int y = ((cell.y - currentWorm.position.y) + range - 1) / range;
+            return ShootCommand(shootTo(x, y));
+        }
+        return null;
+    }
+
+    private Direction shootTo(int x, int y) {
+        for (Direction direction : Direction.values()) {
+            if (direction.x == x && direction.y == y) {
+                return direction;
+            }
+        }
+    }
+
+    private boolean enemyWormInRange(Cell cell) {
+        for (int i = 0; i < 3; i++) {
+            if (opponent.worms[i].health > 0) {
+                if ((opponent.worms[i].position.x == cell.x) && opponent.worms[i].position.y == cell.y) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean allyWormInRange(Cell cell) {
+        for (int i = 0; i < 3; i++) {
+            if (player.worms[i].health > 0) {
+                if ((player.worms[i].position.x == cell.x) && player.worms[i].position.y == cell.y) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     private Command runAway(Worm worm) {
         // If in danger (lowHP) and in dangerous area (shootable or bananabomb threat)
         // run away then dont move there if no move then move furthest from enemy
@@ -341,7 +383,16 @@ public class Bot {
             }
         }
 
-        //Code for attack
+        List<Cell> shootCells = shootableCell();
+        int range = currentWorm.weapon.range;
+        Command myCommand;
+        for (Cell cell : shootCells) {
+            myCommand = shootDirection(cell);
+            if (myCommand != null) {
+                return myCommand;
+            }
+        }
+        
         if (currentWorm.snowballs != null) {
             Cell target = findSnowableCell(opponent);
             if (target != null) {
