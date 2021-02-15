@@ -1,3 +1,4 @@
 Round,LastCommandType,LastCommand,ActiveWorm,Score,Health,Worm1 Health,Worm1 x,Worm1 y,Worm2 Health,Worm2 x,Worm2 y,Worm3 Health,Worm3 x,Worm3 y
 1,null,"null",1,116,350,150,24,4,100,24,28,100,1,16
 2,invalid,"invalid",1,112,350,150,24,4,100,24,28,100,1,16
+3,invalid,"invalid",2,108,350,150,24,4,100,24,28,100,1,16

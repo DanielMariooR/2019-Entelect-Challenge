@@ -225,7 +225,7 @@ public class Bot {
         boolean noValidMove = true;
         for (Direction direction : Direction.values()) {
             if (!isPosDangerous(direction.x, direction.y)) {
-                return go_to_pos(direction.x, direction.y);
+                return new MoveCommand(direction.x, direction.y);
             }
 
             if (isValidMove(direction.x, direction.y)) {

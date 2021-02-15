@@ -12,3 +12,4 @@ Round,LastCommandType,LastCommand,ActiveWorm,Score,Health,Worm1 Health,Worm1 x,W
 11,move,"move 11 25",1,172,350,150,11,25,100,10,6,100,29,17
 12,dig,"dig 11 7",2,179,350,150,11,25,100,10,6,100,29,17
 13,move,"move 28 17",3,184,350,150,11,25,100,10,6,100,28,17
+14,dig,"dig 12 24",1,191,350,150,11,25,100,10,6,100,28,17
