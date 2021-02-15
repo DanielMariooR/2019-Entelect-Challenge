@@ -224,11 +224,11 @@ public class Bot {
 
         boolean noValidMove = true;
         for (Direction direction : Direction.values()) {
-            if (!isPosDangerous(direction.x, direction.y)) {
-                return new MoveCommand(direction.x, direction.y);
+            if (!isPosDangerous(worm.position.x+direction.x, worm.position.y+direction.y)) {
+                return go_to_pos(worm, worm.position.x+direction.x, worm.position.y+direction.y);
             }
 
-            if (isValidMove(direction.x, direction.y)) {
+            if (isValidMove(worm, direction.x, direction.y)) {
                 noValidMove = false;
             }
         }
@@ -257,11 +257,7 @@ public class Bot {
             int dy = direction.y;
             int x = worm.position.x;
             int y = worm.position.y;
-            while (true) {
-                if (euclideanDistance(worm.position.x, worm.position.y, x, y) > 4) {
-                    break;
-                }
-
+            while (euclideanDistance(worm.position.x, worm.position.y, x, y) < 4) {
                 dist = 0;
                 for (int i = 0; i < 3; i++) {
                     if (opponent.worms[i].health > 0) {
@@ -283,7 +279,7 @@ public class Bot {
             }
         }
 
-        return go_to_pos(moveX, moveY);
+        return go_to_pos(worm, moveX, moveY);
     }
 
     private boolean isPosDangerous(int x, int y) {
@@ -326,15 +322,19 @@ public class Bot {
         }
 
         if (move_x != -99 && move_y != -99) {
-            return go_to_pos(move_x, move_y);
+            return go_to_pos(currentWorm, move_x, move_y);
         }
 
         return null;
     }
 
 
-    private boolean isValidMove(int x, int y) {
+    private boolean isValidMove(Worm worm, int x, int y) {
         if (!isValidCoordinate(x, y)) {
+            return false;
+        }
+
+        if(euclideanDistance(worm.position.x, worm.position.y, x, y) != 1){
             return false;
         }
 
@@ -352,19 +352,19 @@ public class Bot {
         return true;
     }
 
-    private Command go_to_pos(int posX, int posY) {
+    private Command go_to_pos(Worm worm, int posX, int posY) {
         int min = 10000;
         int move_x = -99;
         int move_y = -99;
         for (Direction direction : Direction.values()) {
-            int x = currentWorm.position.x + direction.x;
-            int y = currentWorm.position.y + direction.y;
+            int x = worm.position.x + direction.x;
+            int y = worm.position.y + direction.y;
 
             if (!isValidCoordinate(x, y)) {
                 continue;
             }
 
-            if (!isValidMove(x, y)) {
+            if (!isValidMove(worm, x, y)) {
                 continue;
             }
 
@@ -388,7 +388,7 @@ public class Bot {
     }
 
     private Command go_to_center() {
-        return go_to_pos(16, 16);
+        return go_to_pos(currentWorm,16, 16);
     }
 
     private int euclideanDistance(int aX, int aY, int bX, int bY) {

@@ -1,0 +1,3 @@
+Command: select 2; move 22 13
+Execution time: 0ms
+Exception: null
