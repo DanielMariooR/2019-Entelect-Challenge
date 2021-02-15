@@ -408,7 +408,7 @@ public class Bot {
     private Worm findBananableEnemy(Opponent enemy) {
         for (int i = 2; i >= 0; i--) {
             if (enemy.worms[i].health > 0) {
-                if (euclideanDistance(currentWorm.position.x, currentWorm.position.y, enemy.worms[i].position.x, enemy.worms[i].position.y) <= currentWorm.bananaBombs.range + 1) {
+                if (euclideanDistance(currentWorm.position.x, currentWorm.position.y, enemy.worms[i].position.x, enemy.worms[i].position.y) < currentWorm.bananaBombs.range + 1) {
                     return enemy.worms[i];
                 }
             }
@@ -436,7 +436,7 @@ public class Bot {
                         }
                     }
                     for (Cell worthyCell : getSurroundingCells(enemy.worms[i].position.x, enemy.worms[i].position.y, 1)) {
-                        if ((euclideanDistance(worthyCell.x, worthyCell.y, currentWorm.position.x, currentWorm.position.y) <= currentWorm.snowballs.range + 1) && (!forbiddenCells.contains(worthyCell))) {
+                        if ((euclideanDistance(worthyCell.x, worthyCell.y, currentWorm.position.x, currentWorm.position.y) < currentWorm.snowballs.range + 2) && (!forbiddenCells.contains(worthyCell))) {
                             return worthyCell;
                         }
                     }
