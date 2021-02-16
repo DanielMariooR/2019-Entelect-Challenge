@@ -1,0 +1,10 @@
+Match seed: 1470
+
+The winner is: B - Reference Bot
+
+A - James- score:587 health:274
+B - Reference Bot- score:740 health:292
+=======================================
+Referee messages
+=======================================
+DoNothingsCount for @Player(1) reached a count of 3 @Round(60)

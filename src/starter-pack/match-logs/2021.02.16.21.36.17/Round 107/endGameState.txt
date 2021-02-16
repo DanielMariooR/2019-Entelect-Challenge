@@ -1,0 +1,6 @@
+Match seed: 2004
+
+The winner is: B - Reference Bot
+
+A - James- score:1127 health:0
+B - Reference Bot- score:1299 health:30

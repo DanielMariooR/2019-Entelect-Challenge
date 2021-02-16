@@ -241,7 +241,7 @@ public class Bot {
                 return shootDirection(targetCell);
             }
         }
-        return DoNothing();
+        return null;
     }
 
 
@@ -461,18 +461,19 @@ public class Bot {
     }
 
     public Command Run() {
+        Command myCommand;
 
-        for (Worm ally : player.worms) {
-            if (ally.id != currentWorm.id && ally.health > 0 && ally.health <= 25 && player.remainingselect > 0) {
-                Command myCommand = runAway(ally);
-                return new SelectCommand(ally.id, myCommand);
+        for (Direction direction : Direction.values()) {
+            Cell cell = gameState.map[direction.y + currentWorm.position.y][direction.x+currentWorm.position.x];
+            PowerUp healthPack = cell.powerUp;
+            if (healthPack != null) {
+                return new MoveCommand(currentWorm.position.x+direction.x, currentWorm.position.y+direction.y);
             }
         }
 
-        Command myCommand;
-
-        if (isPosDangerous(currentWorm.position.x, currentWorm.position.y) && currentWorm.health <= 25) {
-            myCommand = runAway(currentWorm);
+        Cell cell = gameState.map[currentWorm.position.y][currentWorm.position.x];
+        if (cell.type == CellType.LAVA) {
+            myCommand = go_to_center();
             if (myCommand != null) {
                 return myCommand;
             }
@@ -483,6 +484,13 @@ public class Bot {
             myCommand = shootDirection(shootCell);
             if (myCommand != null) {
                 return myCommand;
+            }
+        }
+
+        for (Worm ally : player.worms) {
+            if (isPosDangerous(ally.position.x, ally.position.y) && ally.id != currentWorm.id && ally.health > 0 && ally.health <= 25 && player.remainingselect > 0) {
+                myCommand = runAway(ally);
+                return new SelectCommand(ally.id, myCommand);
             }
         }
 
@@ -503,25 +511,22 @@ public class Bot {
             }
         }
 
-        for (Direction direction : Direction.values()) {
-            Cell cell = gameState.map[direction.y + currentWorm.position.y][direction.x+currentWorm.position.x];
-            PowerUp healthPack = cell.powerUp;
-            if (healthPack != null) {
-                return new MoveCommand(direction.x, direction.y);
+        if(player.score < opponent.score){
+            if(shootCell != null){
+                myCommand = shootDirection(shootCell);
+                if(myCommand != null){
+                    return myCommand;
+                }
+            } else {
+                myCommand = move_to_lowest_health();
             }
         }
 
-        Cell cell = gameState.map[currentWorm.position.y][currentWorm.position.x];
-        if (cell.type == CellType.LAVA) {
-            myCommand = go_to_center();
-            if (myCommand != null) {
+        if(isPosDangerous(currentWorm.position.x, currentWorm.position.y) && currentWorm.health < 8){
+            myCommand = runAway(currentWorm);
+            if(myCommand != null){
                 return myCommand;
             }
-        }
-
-        myCommand = move_to_lowest_health();
-        if (myCommand != null) {
-            return myCommand;
         }
 
         myCommand = go_to_center();

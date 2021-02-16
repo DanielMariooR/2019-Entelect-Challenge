@@ -1,0 +1,6 @@
+Match seed: 2007
+
+The winner is: B - Reference Bot
+
+A - James- score:918 health:0
+B - Reference Bot- score:1291 health:116
