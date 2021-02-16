@@ -406,14 +406,17 @@ public class Bot {
 
 
     private Worm findBananableEnemy(Opponent enemy) {
+        Worm output = null;
         for (int i = 2; i >= 0; i--) {
             if (enemy.worms[i].health > 0) {
                 if (euclideanDistance(currentWorm.position.x, currentWorm.position.y, enemy.worms[i].position.x, enemy.worms[i].position.y) < currentWorm.bananaBombs.range + 1) {
-                    return enemy.worms[i];
+                    if ((output == null) || (output.health < enemy.worms[i].health)){
+                        output = enemy.worms[i];
+                    }
                 }
             }
         }
-        return null;
+        return output;
     }
 
     private Worm possibleBlastedAlly(Worm target) {
@@ -436,7 +439,7 @@ public class Bot {
                         }
                     }
                     for (Cell worthyCell : getSurroundingCells(enemy.worms[i].position.x, enemy.worms[i].position.y, 1)) {
-                        if ((euclideanDistance(worthyCell.x, worthyCell.y, currentWorm.position.x, currentWorm.position.y) < currentWorm.snowballs.range + 2) && (!forbiddenCells.contains(worthyCell))) {
+                        if ((euclideanDistance(worthyCell.x, worthyCell.y, currentWorm.position.x, currentWorm.position.y) < currentWorm.snowballs.range + 1) && (!forbiddenCells.contains(worthyCell))) {
                             return worthyCell;
                         }
                     }
